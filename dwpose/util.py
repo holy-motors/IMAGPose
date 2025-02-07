@@ -4,9 +4,41 @@ import numpy as np
 import matplotlib
 import cv2
 import itertools
-
+import random
+import torch
 
 eps = 0.01
+
+import importlib.util
+
+def import_filename(filename):
+    """
+    Dynamically imports a Python module from the given filename.
+    The imported module is expected to have an attribute 'cfg'.
+    """
+    spec = importlib.util.spec_from_file_location("config_module", filename)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+
+def seed_everything(seed):
+    """
+    Set the seed for reproducibility.
+    
+    Parameters:
+        seed (int): The seed value to use.
+    """
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    # If you have GPUs, set the seed for all available GPUs.
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    # Optionally, you can enforce deterministic behavior (at the cost of performance)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
 
 def smart_resize(x, s):

@@ -10,7 +10,9 @@ from torchvision import transforms
 
 from models.unet_3d import UNet3DConditionModel
 from models.pose_guider import PoseGuider
-from train_stage1_vae_clip import PatchEmbedding
+#from train_stage1_vae_clip import PatchEmbedding
+from train_stage1 import PatchEmbedding
+
 
 from pipeline.pipeline_pose2img import Pose2ImagePipeline
 

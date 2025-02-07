@@ -34,12 +34,14 @@ from tqdm.auto import tqdm
 from diffusers.models.modeling_utils import ModelMixin
 from transformers import CLIPVisionModelWithProjection
 from transformers import Dinov2Model
-from pose_DeepFashion_dataset import HumanPoseDataset
+#from pose_DeepFashion_dataset import HumanPoseDataset
+from pose_dataset import HumanPoseDataset
+
 # from models.mutual_self_attention import ReferenceAttentionControl
 from models.pose_guider import PoseGuider
 from models.unet_2d_condition import UNet2DConditionModel
 from models.unet_3d import UNet3DConditionModel
-from utils import (
+from dwpose.util import (
     import_filename,
     seed_everything,
 )
